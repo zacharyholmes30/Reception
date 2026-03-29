@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visitor Notification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    .message {
+      font-size: 2rem;
+      margin: 20px;
+    }
+    .checkmark {
+      font-size: 4rem;
+      color: green;
+      animation: pop 0.5s ease;
+    }
+    @keyframes pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="checkmark">✔️</div>
+  <div class="message">Our receptionist will be with you shortly.</div>
+
+  <script>
+    // Trigger your Zapier webhook
+    fetch("https://hooks.zapier.com/hooks/catch/27018239/unr2c90/")
+      .then(() => {
+        // After firing the webhook, redirect to your Carrd page
+        window.location.href = "https://receptionnotification.carrd.co/";
+      })
+      .catch(error => console.error("Error triggering Zap:", error));
+  </script>
+</body>
+</html>
